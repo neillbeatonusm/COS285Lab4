@@ -74,15 +74,16 @@ q.add(node.right);
 System.out.println();
 }
  /** Recursion method. */ 
-        public boolean contains(int target) {
-        return containsRec(root, target);
-    }
-         private boolean containsRec(Node cur, int target) {
-        if (cur == null) return false;
-        if (target == cur.data) return true;
-        return target < cur.data
-                ? containsRec(cur.left, target)
-                : containsRec(cur.right, target);
+    public boolean contains(E target) {
+    return containsRec(root, target);
+}
+     private boolean containsRec(Node<E> cur, E target) {
+    if (cur == null) return false;
+    if (target.compareTo(cur.data) == 0) return true;
+    return target.compareTo(cur.data) < 0
+            ? containsRec(cur.left, target)
+            : containsRec(cur.right, target);
+
     
     }
 }
