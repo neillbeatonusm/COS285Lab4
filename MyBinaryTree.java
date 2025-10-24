@@ -73,6 +73,16 @@ q.add(node.right);
 }
 System.out.println();
 }
-        
+ /** Recursion method. */ 
+        public boolean contains(int target) {
+        return containsRec(root, target);
+    }
+         private boolean containsRec(Node cur, int target) {
+        if (cur == null) return false;
+        if (target == cur.data) return true;
+        return target < cur.data
+                ? containsRec(cur.left, target)
+                : containsRec(cur.right, target);
+    
     }
 }
