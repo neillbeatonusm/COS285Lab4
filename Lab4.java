@@ -41,6 +41,7 @@ public class Lab4 {
             System.out.println("Error reading file: " + e.getMessage());
         }
         return numbers;
+        
     }
 
 }

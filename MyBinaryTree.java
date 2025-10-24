@@ -25,6 +25,7 @@ public class MyBinaryTree<E extends Comparable<E>> {
         }
     }
     
+    
     /**Recursively searches for the next available insertion spot
      * and inserts a new node with the given value to that space
      * in the tree.
