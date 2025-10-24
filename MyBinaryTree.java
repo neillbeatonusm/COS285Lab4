@@ -25,7 +25,6 @@ public class MyBinaryTree<E extends Comparable<E>> {
         }
     }
     
-    
     /**Recursively searches for the next available insertion spot
      * and inserts a new node with the given value to that space
      * in the tree.
@@ -50,13 +49,73 @@ public class MyBinaryTree<E extends Comparable<E>> {
         }
         return current;
     }
-    
-    /** Helper function to quickly build a tree from a List of elements.
-     * @param elements - a List of data type E to be added to the tree.
+    /** 
+     * Adds values from a list into the tree one by one.
+     * Calls insert() for every element in the list.
+     * @param elements the list of items to add to the tree
      */
     public void buildTree(List<E> elements) {
         for (E element : elements) {
             insert(element);
         }
     }
+
+    /**
+     * Prints out all the nodes in the tree using Breadth First Search.
+     * Starts from the root and goes level by level from left to right.
+     */
+    public void bfsPrintTree() {
+        if (root == null) {
+            return;
+        }
+        Queue<Node<E>> q = new ArrayDeque<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            Node<E> node = q.remove();
+            System.out.print(node.data + " ");
+            if (node.left != null) {
+                q.add(node.left);
+            }
+            if (node.right != null) {
+                q.add(node.right);
+            }
+        }
+        System.out.println();
+    }
+
+    /**
+     * Searches the tree for a value using recursion.
+     * Returns true if the value is found, false if it’s not.
+     * @param target the value to search for in the tree
+     * @return true if the value exists in the tree else false
+     */
+    public boolean recursiveSearch(E target) {
+        if (root == null) {
+            return false;
+        }
+        Node<E> node = root;
+
+        if (node.data.equals(target)) {
+            return true;
+        }
+
+        if (target.compareTo(node.data) < 0) {
+            if (node.left == null) {
+                return false;
+            }
+            MyBinaryTree<E> leftTree = new MyBinaryTree<>();
+            leftTree.root = node.left;
+            return leftTree.recursiveSearch(target);
+        } else {
+            if (node.right == null) {
+                return false;
+            }
+            MyBinaryTree<E> rightTree = new MyBinaryTree<>();
+            rightTree.root = node.right;
+            return rightTree.recursiveSearch(target);
+        }
+        
+    }
+
 }
