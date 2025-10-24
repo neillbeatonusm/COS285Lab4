@@ -15,6 +15,8 @@ public class Lab4 {
     public static void main(String[] args) {
         
         // Create list of Integers from data file.
+        
+        //List<Integer> data = loadNumbersFromFile("data.txt");
         List<Integer> data = loadNumbersFromFile(args[0]);
 
         // Create a new empty MyBinaryTree.
@@ -23,6 +25,9 @@ public class Lab4 {
         // Add the data to the tree.
         tree.buildTree(data);
 
+        //tree.bfsPrintTree();
+        //System.out.println(tree.recursiveSearch(12));
+        //System.out.println(tree.recursiveSearch(3));
     }
 
     /**Create a List of Integers from a given filepath with data
@@ -41,7 +46,6 @@ public class Lab4 {
             System.out.println("Error reading file: " + e.getMessage());
         }
         return numbers;
-        
     }
 
 }
